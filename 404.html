@@ -15,12 +15,18 @@
     
     
       
-        <title>CTF记录</title>
+        <title>自留地</title>
       
     
     
       <link rel="stylesheet" href="/assets/stylesheets/main.71dfd922.min.css">
       
+        <link rel="stylesheet" href="/assets/stylesheets/palette.616af814.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
       
     
     
@@ -40,7 +46,10 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="purple">
   
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -54,7 +63,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="/." title="CTF记录" class="md-header-nav__button md-logo" aria-label="CTF记录">
+    <a href="/." title="自留地" class="md-header-nav__button md-logo" aria-label="自留地">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -67,7 +76,7 @@
       
         <div class="md-header-nav__ellipsis">
           <span class="md-header-nav__topic md-ellipsis">
-            CTF记录
+            自留地
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
@@ -118,6 +127,39 @@
       
       
         
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="/." class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="/wp/DASCTF/" class="md-tabs__link">
+          writeup
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -128,13 +170,13 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="CTF记录" class="md-nav__button md-logo" aria-label="CTF记录">
+    <a href="/." title="自留地" class="md-nav__button md-logo" aria-label="自留地">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    CTF记录
+    自留地
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -241,7 +283,7 @@
       <script>
         app = initialize({
           base: "/",
-          features: [],
+          features: ["tabs"],
           search: Object.assign({
             worker: "/assets/javascripts/worker/search.27c6a5e6.min.js"
           }, typeof search !== "undefined" && search)

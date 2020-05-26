@@ -15,12 +15,18 @@
     
     
       
-        <title>DASCTF2020 - CTF记录</title>
+        <title>DASCTF2020 - 自留地</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/main.71dfd922.min.css">
       
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.616af814.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
       
     
     
@@ -40,7 +46,10 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="purple">
   
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -59,7 +68,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="../.." title="CTF记录" class="md-header-nav__button md-logo" aria-label="CTF记录">
+    <a href="../.." title="自留地" class="md-header-nav__button md-logo" aria-label="自留地">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -72,7 +81,7 @@
       
         <div class="md-header-nav__ellipsis">
           <span class="md-header-nav__topic md-ellipsis">
-            CTF记录
+            自留地
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
@@ -123,6 +132,41 @@
       
       
         
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          writeup
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -133,13 +177,13 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="CTF记录" class="md-nav__button md-logo" aria-label="CTF记录">
+    <a href="../.." title="自留地" class="md-nav__button md-logo" aria-label="自留地">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    CTF记录
+    自留地
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -434,126 +478,126 @@
                 
                   <h1>DASCTF2020</h1>
                 
-                <h2 id="web">Web</h2>
-<h3 id="_1">帮帮小红花</h3>
+                <h2 id="web">Web<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
+<h3 id="_1">帮帮小红花<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>考点：</p>
 <p>预期：防火墙绕过</p>
 <p>非预期：盲注</p>
 <p>因为是一开始做的，权限没对有人写了shell.php，被我扫出来了，直接上车，后面用看到flag知道了跟iptables命令有关，也就是防火墙。这儿没环境了，等有环境补上。</p>
 <p>后面还有盲注解法，也就是通过grep来查找字符和sleep来进行盲注，大概思路：</p>
-<pre><code>cat /flag |grep 'BJD{xx' || sleep(2);
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat /flag |grep &#39;BJD{xx&#39; || sleep(2);
+</code></pre></div>
 
-<h2 id="misc">Misc</h2>
-<h3 id="baby_web">baby_web</h3>
+<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h2>
+<h3 id="baby_web">baby_web<a class="headerlink" href="#baby_web" title="Permanent link">&para;</a></h3>
 <p>考点：零宽度字符隐写、各种奇怪密码</p>
-<p>参考：http://www.ga1axy.top/index.php/archives/20/</p>
+<p>参考：<a href="http://www.ga1axy.top/index.php/archives/20/">http://www.ga1axy.top/index.php/archives/20/</a></p>
 <p>有个压缩包，压缩包密码在html里面，关于零宽度字符的参考在ga1axy师傅blog（上面），解密后需要逆一下图片的hex，脚本：</p>
-<pre><code class="python">f = open('f14g.png','rb').read()
+<div class="highlight"><pre><span></span><code><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;f14g.png&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-f2 = list(f)
-f3 = f2[::-1]
-#print f3
-f4 = ''.join(f3)
-with open('f1ag.png','wb') as f:
-    f.write(f4)
-</code></pre>
+<span class="n">f2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">f3</span> <span class="o">=</span> <span class="n">f2</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">#print f3</span>
+<span class="n">f4</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f3</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;f1ag.png&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f4</span><span class="p">)</span>
+</code></pre></div>
 
 <p>然后在对应网站上解密即可。</p>
-<h3 id="bincat-2">bin/cat 2</h3>
+<h3 id="bincat-2">bin/cat 2<a class="headerlink" href="#bincat-2" title="Permanent link">&para;</a></h3>
 <p>考点：二维码转换</p>
 <p>我是直接把图片用ste处理然后调到对比度比较高的通道扫即可（逃</p>
-<h3 id="questionnaire">questionnaire</h3>
+<h3 id="questionnaire">questionnaire<a class="headerlink" href="#questionnaire" title="Permanent link">&para;</a></h3>
 <p>考点：查源码</p>
 <p>签到题不说了，答案在源码，连接下面的十六进制字符即可</p>
-<h2 id="crypto">Crypto</h2>
-<h3 id="bbcrypto">bbcrypto</h3>
+<h2 id="crypto">Crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h2>
+<h3 id="bbcrypto">bbcrypto<a class="headerlink" href="#bbcrypto" title="Permanent link">&para;</a></h3>
 <p>考点：简单加密</p>
 <p>通过已知密文和部分明文枚举出a和salt，然后通过密文枚举flag值（脚本写的太辣鸡了，轻喷</p>
-<pre><code class="python">from __future__ import print_function
-import string
-from itertools import *
-enc = '177401504b0125272c122743171e2c250a602e3a7c206e014a012703273a3c0160173a73753d'
-dict1 = string.ascii_lowercase
-#print dict1
-#salt = 'abc'
-#si = cycle(salt.lower())
-def encrypt(m, a, si):
-    c=&quot;&quot;
-    for i in range(len(m)):
-        c+=hex(((ord(m[i])) * a + ord(next(si))) % 128)[2:].zfill(2)
-    return c
-# for i in dict1:
-#   for j in dict1:
-#       for k in dict1:
-#           salt = i+j+k
-#           si = cycle(salt.lower())
-#           for m in range(128):
-#               if encrypt('flag{',m,si) == '177401504b':
-#                   print m
-salt = 'ahh'
-a = 57
-si = cycle(salt.lower())
-enc = '177401504b0125272c122743171e2c250a602e3a7c206e014a012703273a3c0160173a73753d'
-flag = ''
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">enc</span> <span class="o">=</span> <span class="s1">&#39;177401504b0125272c122743171e2c250a602e3a7c206e014a012703273a3c0160173a73753d&#39;</span>
+<span class="n">dict1</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span>
+<span class="c1">#print dict1</span>
+<span class="c1">#salt = &#39;abc&#39;</span>
+<span class="c1">#si = cycle(salt.lower())</span>
+<span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">si</span><span class="p">):</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)):</span>
+        <span class="n">c</span><span class="o">+=</span><span class="nb">hex</span><span class="p">(((</span><span class="nb">ord</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">si</span><span class="p">)))</span> <span class="o">%</span> <span class="mi">128</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+<span class="c1"># for i in dict1:</span>
+<span class="c1">#   for j in dict1:</span>
+<span class="c1">#       for k in dict1:</span>
+<span class="c1">#           salt = i+j+k</span>
+<span class="c1">#           si = cycle(salt.lower())</span>
+<span class="c1">#           for m in range(128):</span>
+<span class="c1">#               if encrypt(&#39;flag{&#39;,m,si) == &#39;177401504b&#39;:</span>
+<span class="c1">#                   print m</span>
+<span class="n">salt</span> <span class="o">=</span> <span class="s1">&#39;ahh&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">57</span>
+<span class="n">si</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">salt</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="n">enc</span> <span class="o">=</span> <span class="s1">&#39;177401504b0125272c122743171e2c250a602e3a7c206e014a012703273a3c0160173a73753d&#39;</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
-dict2 = '0123456789'+string.ascii_lowercase+'{}'
+<span class="n">dict2</span> <span class="o">=</span> <span class="s1">&#39;0123456789&#39;</span><span class="o">+</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span>
 
-# for m in range(len(enc)/2):
-#   for i in dict2:
-#       for salt in ['ahh','hah','hha']:
-#           if encrypt(i,a,si) == enc[m*2:m*2+2]:
-#               print(i,end='')
-#               break
-flag =list('ad7vd9z7v3rffdd2q8w5vb4s7x6ua1ra7v2s7vb3ta8wfbc4u')
-for i in flag:
-    if ord(i) &gt; ord('f'):
-        flag.remove(i)
-print(''.join(flag))
-</code></pre>
+<span class="c1"># for m in range(len(enc)/2):</span>
+<span class="c1">#   for i in dict2:</span>
+<span class="c1">#       for salt in [&#39;ahh&#39;,&#39;hah&#39;,&#39;hha&#39;]:</span>
+<span class="c1">#           if encrypt(i,a,si) == enc[m*2:m*2+2]:</span>
+<span class="c1">#               print(i,end=&#39;&#39;)</span>
+<span class="c1">#               break</span>
+<span class="n">flag</span> <span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ad7vd9z7v3rffdd2q8w5vb4s7x6ua1ra7v2s7vb3ta8wfbc4u&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">flag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">):</span>
+        <span class="n">flag</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flag</span><span class="p">))</span>
+</code></pre></div>
 
-<h3 id="easylcg">easyLCG</h3>
+<h3 id="easylcg">easyLCG<a class="headerlink" href="#easylcg" title="Permanent link">&para;</a></h3>
 <p>考点：LCG简单利用</p>
 <p>比较简单的LCG，通过output枚举出s1，然后通过s1求出s2，进而s3也能被预测：</p>
-<pre><code class="python">from Crypto.Util.number import *
-a = 3844066521
-b = 3316005024
-m = 2249804527
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">3844066521</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3316005024</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2249804527</span>
 
-for i in range(65536):
-    s1 = int(bin(16269)[2:]+bin(i)[2:].zfill(16),2)
-    s2 = (s1*a + b)%m
-    if s2 &gt;&gt; 16 == 4249:
-        print s1
-</code></pre>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65536</span><span class="p">):</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">16269</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">+</span><span class="nb">bin</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">s1</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">%</span><span class="n">m</span>
+    <span class="k">if</span> <span class="n">s2</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span> <span class="o">==</span> <span class="mi">4249</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="n">s1</span>
+</code></pre></div>
 
 <p>然后改一下加密脚本就能求出key：</p>
-<pre><code class="python">from Crypto.Util.number import *
-class lcg:
-    def __init__(self):
-        self.a = 3844066521
-        self.b = 3316005024
-        self.m = 2249804527
-        self.seed = 278490266
-    def next(self):
-        self.seed = (self.a*self.seed+self.b) % self.m
-        return self.seed&gt;&gt;16
-class DH:
-    def __init__(self):
-        self.lcg = lcg()
-        self.g = 183096451267674849541594370111199688704
-        self.m = 102752586316294557951738800745394456033378966059875498971396396583576430992701
-        self.A, self.a = self.gen_AB()
-        self.B, self.b = self.gen_AB()
-        self.key = pow(self.A, self.b, self.m)
-    def gen_AB(self):
-        x = ''
-        for _ in range(64):
-            x += '1' if self.lcg.next() % 2 else '0'
-        return pow(self.g, int(x, 2), self.m), int(x, 2)
-#DH = DH()
-print long_to_bytes(DH().key ^ 13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">class</span> <span class="nc">lcg</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3844066521</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">3316005024</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="mi">2249804527</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="mi">278490266</span>
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="o">&gt;&gt;</span><span class="mi">16</span>
+<span class="k">class</span> <span class="nc">DH</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lcg</span> <span class="o">=</span> <span class="n">lcg</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="mi">183096451267674849541594370111199688704</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="mi">102752586316294557951738800745394456033378966059875498971396396583576430992701</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_AB</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_AB</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">gen_AB</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="s1">&#39;1&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lcg</span><span class="o">.</span><span class="n">next</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">else</span> <span class="s1">&#39;0&#39;</span>
+        <span class="k">return</span> <span class="nb">pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">#DH = DH()</span>
+<span class="nb">print</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">DH</span><span class="p">()</span><span class="o">.</span><span class="n">key</span> <span class="o">^</span> <span class="mi">13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703</span><span class="p">)</span>
+</code></pre></div>
                 
               
               
@@ -612,7 +656,7 @@ print long_to_bytes(DH().key ^ 1304000448281993575513099628549467859283070261807
       <script>
         app = initialize({
           base: "../..",
-          features: [],
+          features: ["tabs"],
           search: Object.assign({
             worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
           }, typeof search !== "undefined" && search)
