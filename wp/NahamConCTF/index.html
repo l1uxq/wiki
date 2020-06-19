@@ -1008,15 +1008,15 @@ The phonebook is located at phphonebook.php
 
 <h3 id="flag-jokes">Flag Jokes<a class="headerlink" href="#flag-jokes" title="Permanent link">&para;</a></h3>
 <p>题目提示需要用admin登录，直接用admin登录发现没有权限，先尝试其他用户名，抓个包发现cookie</p>
-<p><img src="F:\wiki\docs\images\1.png" alt="mkdocs" style="zoom:67%;" /></p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/array0111/images@master/blog/wiki-NahamConCTF-1.png" /></p>
 <p>把token在jwt.io上解码得到：</p>
-<p><img src="F:\wiki\docs\images\2.png" alt="mkdocs" style="zoom:67%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/array0111/images@master/blog/wiki-NahamConCTF-2.png" style="zoom:67%;" /></p>
 <p>能看出加密算法是rs256，还有奇怪的jku和kid。根据jku的值我们可以访问对应网站的jwks.json值</p>
-<p><img src="F:\wiki\docs\images\3.png" alt="mkdocs" style="zoom: 80%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/array0111/images@master/blog/wiki-NahamConCTF-3.png" style="zoom:80%;" /></p>
 <p>使用的是RSA签名算法来进行验证，简单来说验证过程大概通过jku的值来包含jwks.json，通过e和n求出公钥和私钥，然后生成对应用户名的token值。我们可以通过伪造json的值来绕过admin的登录限制。因为jku的值可控，也就是签名过程可控。由于kid值是固定的，通过kid的值在线生成私钥和公钥，然后包含vps的jwks.json来进行验证。（具体过程参考下面链接）</p>
-<p><img src="F:\wiki\docs\images\4.png" alt="docs" style="zoom:67%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/array0111/images@master/blog/wiki-NahamConCTF-4.png" style="zoom:67%;" /></p>
 <p>将生成的jwk转化为pem格式(<a href="https://8gwifi.org/jwkconvertfunctions.jsp">https://8gwifi.org/jwkconvertfunctions.jsp</a>)</p>
-<p><img src="F:\wiki\docs\images\5.png" style="zoom:67%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/array0111/images@master/blog/wiki-NahamConCTF-5.png" style="zoom:67%;" /></p>
 <p>然后在vps上写入json，以便jku通过验证</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
         <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -1033,7 +1033,7 @@ The phonebook is located at phphonebook.php
 </code></pre></div>
 
 <p>修改jku和username的值即可登录admin。</p>
-<p><img src="F:\wiki\docs\images\6.png" alt="docs" style="zoom:67%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/array0111/images@master/blog/wiki-NahamConCTF-6.png" style="zoom:67%;" /></p>
 <p>具体参考：</p>
 <p><a href="https://jwt.io/">https://jwt.io/</a></p>
 <p><a href="https://mkjwk.org/">https://mkjwk.org/</a></p>
