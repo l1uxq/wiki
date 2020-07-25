@@ -274,8 +274,6 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         DASCTF2020-7月赛
@@ -292,8 +290,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon">
@@ -304,16 +300,83 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web
+  </a>
+  
+    <nav class="md-nav" aria-label="Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ezfileinclude" class="md-nav__link">
     ezfileinclude
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#sqli" class="md-nav__link">
     SQLi
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwn" class="md-nav__link">
+    Pwn
+  </a>
+  
+    <nav class="md-nav" aria-label="Pwn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    虚假的签到题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigbear" class="md-nav__link">
+    bigbear
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crypto" class="md-nav__link">
+    Crypto
+  </a>
+  
+    <nav class="md-nav" aria-label="Crypto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bullshit" class="md-nav__link">
+    bullshit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ezrsa" class="md-nav__link">
+    ezrsa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -343,8 +406,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon">
@@ -355,16 +416,83 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web
+  </a>
+  
+    <nav class="md-nav" aria-label="Web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ezfileinclude" class="md-nav__link">
     ezfileinclude
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#sqli" class="md-nav__link">
     SQLi
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwn" class="md-nav__link">
+    Pwn
+  </a>
+  
+    <nav class="md-nav" aria-label="Pwn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    虚假的签到题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigbear" class="md-nav__link">
+    bigbear
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crypto" class="md-nav__link">
+    Crypto
+  </a>
+  
+    <nav class="md-nav" aria-label="Crypto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bullshit" class="md-nav__link">
+    bullshit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ezrsa" class="md-nav__link">
+    ezrsa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -384,9 +512,11 @@
                   
                 
                 
+                  <h1>DASCTF2020-7月赛</h1>
+                
                 <p>这次是由okami和sw0r3d以及nop共同完成</p>
-<h1 id="web">Web<a class="headerlink" href="#web" title="Permanent link">&para;</a></h1>
-<h2 id="ezfileinclude">ezfileinclude<a class="headerlink" href="#ezfileinclude" title="Permanent link">&para;</a></h2>
+<h2 id="web">Web<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
+<h3 id="ezfileinclude">ezfileinclude<a class="headerlink" href="#ezfileinclude" title="Permanent link">&para;</a></h3>
 <p>考点：目录遍历+？</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -401,7 +531,7 @@
 <span class="nb">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
 </code></pre></div>
 
-<h2 id="sqli">SQLi<a class="headerlink" href="#sqli" title="Permanent link">&para;</a></h2>
+<h3 id="sqli">SQLi<a class="headerlink" href="#sqli" title="Permanent link">&para;</a></h3>
 <p>考点：无列名+盲注+schema的bypass</p>
 <p>过滤了n多，盲注+无列名+sys.x$schema_flattened_keys的bypass</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
@@ -457,8 +587,8 @@
 <span class="k">break</span>
 </code></pre></div>
 
-<h1 id="pwn">Pwn<a class="headerlink" href="#pwn" title="Permanent link">&para;</a></h1>
-<h2 id="_1">虚假的签到题<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="pwn">Pwn<a class="headerlink" href="#pwn" title="Permanent link">&para;</a></h2>
+<h3 id="_1">虚假的签到题<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>一道简单的栈溢出，但是出题人在程序的最后做了一点点修改。</p>
 <p><img alt="image-20200725153925499" src="https://i.loli.net/2020/07/25/9Cu6TebtwjV2fyM.png" /></p>
 <p>leave以后会修改esp为ecx-4，而ecx的值为ebp-4地址上的值。也就是：esp=[ebp-4]-4。因此我们首先需要利用格式化字符漏洞泄漏栈地址，然后修改ebp-4为我们可控的地址，并且修改该地址-4处的值为backdoor，我们就可以获得shell了。</p>
@@ -511,7 +641,7 @@
 <span class="n">exp</span><span class="p">()</span>
 </code></pre></div>
 
-<h2 id="bigbear">bigbear<a class="headerlink" href="#bigbear" title="Permanent link">&para;</a></h2>
+<h3 id="bigbear">bigbear<a class="headerlink" href="#bigbear" title="Permanent link">&para;</a></h3>
 <p>题目很简单，有一个UAF漏洞，难在如何利用。题目限制使用execve，那么我们就需要利用ORW了，而想用ORW则需要栈迁移，第一个想到的是使用setcontext来实现，但是题目libc版本是2.30，setcontext无法使用，那怎么办呢？这里利用了上周geekpwn <a href="http://www.nopnoping.xyz/2020/07/15/geekpwn-wp/#PlayTheNew">playthenew</a>这道题目的思路。</p>
 <p>我们先不说利用方法，先想一想要实现栈迁移的话，我们要怎么做。首先我们得把rbp修改为可控的值，然后执行leave ret对吧？我们利用UAF攻击，可以修改free_hook为任意函数，当free掉一个堆块时，会将堆块地址作为第一个参数传递给该函数。如果我们能在libc中找到一个函数片段，其有mov rbp，rdi这样形式的指令，而且还有一个call函数可控，并将call函数修改为leave ret，那么我们就可以实现栈迁移，并执行ROP链。</p>
 <p>利用IDA搜索，我找到一个函数片段，刚好可以实现上面所诉的内容。</p>
@@ -618,8 +748,8 @@
 <span class="n">exp</span><span class="p">()</span>
 </code></pre></div>
 
-<h1 id="crypto">Crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h1>
-<h2 id="bullshit">bullshit<a class="headerlink" href="#bullshit" title="Permanent link">&para;</a></h2>
+<h2 id="crypto">Crypto<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h2>
+<h3 id="bullshit">bullshit<a class="headerlink" href="#bullshit" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flag</span> <span class="kn">import</span> <span class="n">flag</span>
 <span class="k">def</span> <span class="nf">pairing</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="n">shell</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -672,7 +802,7 @@
 <span class="nb">print</span> <span class="n">flag</span>
 </code></pre></div>
 
-<h2 id="ezrsa">ezrsa<a class="headerlink" href="#ezrsa" title="Permanent link">&para;</a></h2>
+<h3 id="ezrsa">ezrsa<a class="headerlink" href="#ezrsa" title="Permanent link">&para;</a></h3>
 <p>enc.py:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">secret</span> <span class="kn">import</span> <span class="n">flag</span>
 <span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">getPrime</span><span class="p">,</span><span class="n">inverse</span><span class="p">,</span><span class="n">bytes_to_long</span><span class="p">,</span><span class="n">long_to_bytes</span>
