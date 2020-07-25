@@ -15,7 +15,7 @@
     
     
       
-        <title>DASCTF2020 - 自留地</title>
+        <title>DASCTF2020-5月赛 - 自留地</title>
       
     
     
@@ -85,7 +85,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              DASCTF2020
+              DASCTF2020-5月赛
             
           </span>
         </div>
@@ -240,14 +240,14 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        DASCTF2020
+        DASCTF2020-5月赛
         <span class="md-nav__icon md-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
         </span>
       </label>
     
-    <a href="./" title="DASCTF2020" class="md-nav__link md-nav__link--active">
-      DASCTF2020
+    <a href="./" title="DASCTF2020-5月赛" class="md-nav__link md-nav__link--active">
+      DASCTF2020-5月赛
     </a>
     
       
@@ -433,6 +433,18 @@
   <li class="md-nav__item">
     <a href="../NahamConCTF/" title="NahamConCTF2020" class="md-nav__link">
       NahamConCTF2020
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../DASCTF-%E4%B8%83%E6%9C%88%E8%B5%9B/" title="DASCTF2020-7月赛" class="md-nav__link">
+      DASCTF2020-7月赛
     </a>
   </li>
 
@@ -624,15 +636,13 @@
                   
                 
                 
-                  <h1>DASCTF2020</h1>
+                  <h1>DASCTF2020-5月赛</h1>
                 
                 <h2 id="web">Web<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
 <h3 id="_1">帮帮小红花<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>考点：</p>
-<p>预期：防火墙绕过</p>
-<p>非预期：盲注</p>
-<p>因为是一开始做的，权限没对有人写了shell.php，被我扫出来了，直接上车，后面用看到flag知道了跟iptables命令有关，也就是防火墙。这儿没环境了，等有环境补上。</p>
-<p>后面还有盲注解法，也就是通过grep来查找字符和sleep来进行盲注，大概思路：</p>
+<p>盲注</p>
+<p>思路：</p>
 <div class="highlight"><pre><span></span><code>cat /flag |grep &#39;BJD{xx&#39; || sleep(2);
 </code></pre></div>
 
