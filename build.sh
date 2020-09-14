@@ -1,0 +1,1 @@
+sed -i 's/<\/article>/<hr><span id="busuanzi_container_page_pv"><font size="3" color="grey">本文总阅读量<span id="busuanzi_value_page_pv"><\/span>次<\/font><\/span><br\/><\/article>/g' C:\\Users\\sh01d\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\material\\base.html
